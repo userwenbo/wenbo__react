@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+     <script>
+            //自定义call（）
+            Function.prototype.call=function(obj,...args){
+                obj=obj||window
+                obj.tempFn=this
+                obj.tempFn(...args)
+                delete obj.tempFn
+            }
+             Function.prototype.call=function(obj,...args){
+             obj=obj||window
+             obj.tempFn=this
+             obj.tempFn(...args)
+             delete obj.tempFn
+             }
+             //自定义bind方法
+             Function.prototype.bind=function(obj,...args){
+                return (...args2)=>{
+                  this.call(obj,...args,...args2)
+                }
+             }
+              fn.call(obj, 2, 3) // 相当于执行了obj.fn(2, 3)
+              fn.apply(obj, [2, 3])
+              fn.bind(obj)(2, 3)
+              fn.bind(obj, 4)(2, 3)
+              new fn.bind(obj, 4, 5)(2, 3)    //内部函数的this的执行并不会改变 
+      </script>
+</body>
+</html>

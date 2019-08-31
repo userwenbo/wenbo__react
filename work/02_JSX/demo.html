@@ -16,6 +16,17 @@
     /*
      功能: 动态展示列表数据
      */
+     var names= ["1","b","c","d"]
+     const ul=(
+          <ul>
+            {
+              names.map((name,index) => <li key={index}>{name}</li>)
+            }
+          </ul>
+     )
+      
+   
+     ReactDOM.render(ul, document.getElementById('example1'))
   </script>
 </body>
 </html>
